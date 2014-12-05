@@ -1,5 +1,8 @@
 package com.deviotion.ld.eggine;
 
+import com.deviotion.ld.eggine.graphics.Window;
+import com.deviotion.ld.eggine.loop.Loop;
+
 /**
  * Eggine
  * A last minute game engine for Ludum Dare.
@@ -8,5 +11,10 @@ package com.deviotion.ld.eggine;
  *
  */
 
-public class Eggine {
+public abstract class Eggine extends Loop {
+
+    public Eggine (int fps, int ups, Window window) {
+        super(fps, ups, window);
+    }
+
 }
