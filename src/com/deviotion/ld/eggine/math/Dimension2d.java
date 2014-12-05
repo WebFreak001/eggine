@@ -14,7 +14,7 @@ public class Dimension2d {
     private double height;
 
     public Dimension2d (double width, double height) {
-        this.width  = width;
+        this.width = width;
         this.height = height;
     }
 
