@@ -59,18 +59,19 @@ public abstract class Loop {
         while (true) {
             long now = System.nanoTime();
             long taken = now - this.lastLoop;
+            this.lastLoop = now;
 
             this.lagRender += taken;
             this.lagUpdate += taken;
 
-            while (this.lagUpdate < this.calculatedUpdateRate) {
+            while (this.lagUpdate > this.calculatedUpdateRate) {
                 this.update(1000000f / this.lagUpdate);
 
                 this.lagUpdate -= this.calculatedUpdateRate;
                 this.updates++;
             }
 
-            while (this.lagRender < this.calculatedFrameRate) {
+            while (this.lagRender > this.calculatedFrameRate) {
                 this.render(window.getScreen());
 
                 this.lagRender -= this.calculatedFrameRate;
@@ -79,13 +80,15 @@ public abstract class Loop {
 
             now = System.nanoTime();
             if (now >= this.lastFPS + 1000000000f) {
+                this.lastFPS = now;
+
                 this.fps = this.frames;
                 this.ups = this.updates;
 
                 this.frames = 0;
                 this.updates = 0;
 
-                System.out.println("FPS: " + this.fps + ", UPS:" + this.ups);
+                System.out.println("FPS: " + this.fps + ", UPS: " + this.ups);
             }
         }
     }
