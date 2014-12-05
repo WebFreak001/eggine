@@ -29,11 +29,12 @@ public class SpriteSheet {
     }
 
     public Vector2d getTileVector (int tileIndex) {
+        int tilesX = (int) (this.sprite.getDimension().getWidth() / this
+                .spriteSize.getWidth());
+
         return new Vector2d(
-                (tileIndex % this.sprite.getDimension().getWidth()) * this
-                        .spriteSize.getWidth(),
-                (tileIndex / this.sprite.getDimension().getHeight()) * this
-                        .spriteSize.getHeight()
+                (tileIndex % tilesX) * this.spriteSize.getWidth(),
+                (tileIndex / tilesX) * this.spriteSize.getHeight()
         );
     }
 

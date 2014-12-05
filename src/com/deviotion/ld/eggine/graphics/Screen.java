@@ -99,7 +99,8 @@ public class Screen {
     public void renderSprite (Vector2d location, Vector2d startLocation,
                              int endX, int endY, Sprite sprite) {
         this.renderSprite((int) location.getX(), (int) location.getY(), (int)
-                startLocation.getX(), (int) startLocation.getY(), endX, endY, sprite);
+                startLocation.getX(), (int) startLocation.getY(), endX, endY,
+                sprite);
     }
     public void renderSprite (Vector2d location, int startX, int startY,
                               Dimension2d endLocation, Sprite sprite) {
@@ -131,6 +132,17 @@ public class Screen {
             spriteSheet) {
         this.renderSpriteTile((int) vector.getX(), (int) vector.getY(),
                 spriteSheet, tile);
+    }
+
+    public void renderAnimatedSprite (int x, int y, SpriteAnimation
+                                      spriteAnimation) {
+        this.renderSpriteTile(x, y, spriteAnimation.getSpriteSheet(),
+                spriteAnimation.getTile());
+    }
+    public void renderAnimatedSprite (Vector2d vector, SpriteAnimation
+            spriteAnimation) {
+        this.renderAnimatedSprite((int) vector.getX(), (int) vector.getY(),
+                spriteAnimation);
     }
 
     public void fillScreen (int color) {
