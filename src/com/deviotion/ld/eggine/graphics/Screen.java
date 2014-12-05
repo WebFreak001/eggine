@@ -120,6 +120,19 @@ public class Screen {
         }
     }
 
+    public void renderSpriteTile(int x, int y, SpriteSheet spriteSheet,
+                                 int tile) {
+        Vector2d location = spriteSheet.getTileVector(tile);
+
+        this.renderSprite(x, y, location, spriteSheet
+                .getSpriteSize(), spriteSheet.getSprite());
+    }
+    public void renderSpriteTile(Vector2d vector, int tile, SpriteSheet
+            spriteSheet) {
+        this.renderSpriteTile((int) vector.getX(), (int) vector.getY(),
+                spriteSheet, tile);
+    }
+
     public void fillScreen (int color) {
         Arrays.fill(this.pixels, color);
     }
