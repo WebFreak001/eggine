@@ -39,4 +39,9 @@ public class Vector2d {
         return Math.sqrt(distX * distX + distY * distY);
     };
 
+    public void add (Vector2d vector) {
+        this.x += vector.getX();
+        this.y += vector.getY();
+    }
+
 }
