@@ -52,6 +52,9 @@ public class Window extends JFrame {
     public Canvas getCanvas () {
         return this.canvas;
     }
+    public int getScale () {
+        return this.scale;
+    }
 
     public void render() {
         BufferStrategy bufferStrategy = this.canvas.getBufferStrategy();
