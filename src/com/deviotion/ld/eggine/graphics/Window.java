@@ -49,6 +49,9 @@ public class Window extends JFrame {
     public Screen getScreen () {
         return this.screen;
     }
+    public Canvas getCanvas () {
+        return this.canvas;
+    }
 
     public void render() {
         BufferStrategy bufferStrategy = this.canvas.getBufferStrategy();
