@@ -73,6 +73,7 @@ public abstract class Loop {
 
             while (this.lagRender > this.calculatedFrameRate) {
                 this.render(window.getScreen());
+                this.window.render();
 
                 this.lagRender -= this.calculatedFrameRate;
                 this.frames++;
