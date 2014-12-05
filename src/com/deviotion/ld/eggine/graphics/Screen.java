@@ -1,6 +1,7 @@
 package com.deviotion.ld.eggine.graphics;
 
 import com.deviotion.ld.eggine.math.Dimension2d;
+import com.deviotion.ld.eggine.math.Vector2d;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -39,6 +40,79 @@ public class Screen {
         return this.pixels;
     }
 
+    public void renderSprite (int x, int y, int startX, int startY, int endX,
+                             int endY, Sprite sprite) {
+        BufferedImage spriteImage = sprite.getBufferedImage();
+
+        if (startX > sprite.getDimension().getWidth()) startX =
+                (int) sprite.getDimension().getWidth();
+        if (startY > sprite.getDimension().getHeight()) startY =
+                (int) sprite.getDimension().getHeight();
+
+        if (endX > (sprite.getDimension().getWidth() - startX)) endX =
+                ((int) sprite.getDimension().getWidth()
+                        - startX);
+        if (endY > (sprite.getDimension().getWidth() - startX)) endY =
+                ((int) sprite.getDimension().getHeight()
+                        - startX);
+
+
+        for (int i = startX; i < startX + endY; i++) {
+            for (int j = startY; j < startY + endX; j++) {
+                int pixelColor = spriteImage.getRGB(i, j);
+                if (pixelColor != sprite.getTransparentColor()) {
+                    this.setPixel(x + (i - startX), y + (j - startY),
+                            pixelColor);
+                }
+            }
+        }
+    }
+    public void renderSprite (int x, int y, Sprite sprite) {
+        this.renderSprite(x, y, 0, 0, (int) sprite.getDimension().getWidth(),
+                (int) sprite.getDimension().getHeight(), sprite);
+    }
+    public void renderSprite (Vector2d location, Sprite sprite) {
+        this.renderSprite((int) location.getX(), (int) location.getY(), sprite);
+    }
+    public void renderSprite (Vector2d location, Vector2d startLocation,
+                             Dimension2d endLocation, Sprite sprite) {
+        this.renderSprite((int) location.getX(), (int) location.getY(),
+                (int) startLocation.getX(), (int) startLocation.getY(),
+                (int) endLocation.getWidth(), (int) endLocation.getHeight(),
+                sprite);
+    }
+    public void renderSprite (Vector2d location, int startX, int startY,
+                             int endX, int endY, Sprite sprite) {
+        this.renderSprite((int) location.getX(), (int) location.getY(), startX,
+                startY, endX, endY, sprite);
+    }
+    public void renderSprite (int x, int y, Vector2d startLocation, int endX,
+                             int endY, Sprite sprite) {
+        this.renderSprite(x, y, (int) startLocation.getX(),
+                (int) startLocation.getY(), endX, endY, sprite);
+    }
+    public void renderSprite (int x, int y, int startX, int startY,
+                             Dimension2d endLocation, Sprite sprite) {
+        this.renderSprite(x, y, startX, startY, (int) endLocation.getWidth(),
+                (int) endLocation.getHeight(), sprite);
+    }
+    public void renderSprite (Vector2d location, Vector2d startLocation,
+                             int endX, int endY, Sprite sprite) {
+        this.renderSprite((int) location.getX(), (int) location.getY(), (int)
+                startLocation.getX(), (int) startLocation.getY(), endX, endY, sprite);
+    }
+    public void renderSprite (Vector2d location, int startX, int startY,
+                              Dimension2d endLocation, Sprite sprite) {
+        this.renderSprite((int) location.getX(), (int) location.getY(),
+                startX, startY, (int) endLocation.getWidth(), (int) endLocation
+                        .getHeight(), sprite);
+    }
+    public void renderSprite (int x, int y, Vector2d startLocation,
+                             Dimension2d endLocation, Sprite sprite) {
+        this.renderSprite(x, y, (int) startLocation.getX(), (int)
+                        startLocation.getY(), (int) endLocation.getWidth(),
+                (int) endLocation.getHeight(), sprite);
+    }
     public void setPixel (int x, int y, int color) {
         if (x >= 0 && y >= 0 && x < this.dimension.getWidth() && y < this
                 .dimension.getHeight()) {
