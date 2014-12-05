@@ -4,6 +4,7 @@ import com.deviotion.ld.eggine.math.Dimension2d;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 /**
  * Eggine
@@ -50,7 +51,20 @@ public class Window extends JFrame {
     }
 
     public void render() {
+        BufferStrategy bufferStrategy = this.canvas.getBufferStrategy();
+        if (bufferStrategy == null) {
+            this.canvas.createBufferStrategy(3);
+            bufferStrategy = this.canvas.getBufferStrategy();
+        }
 
+        Graphics graphics = bufferStrategy.getDrawGraphics();
+
+        graphics.drawImage(this.screen.getBufferedImage(), 0, 0, (int) this
+                .dimension.getWidth() * this.scale, (int) this.dimension
+                .getHeight() * this.scale, null);
+
+        bufferStrategy.show();
+        graphics.dispose();
     }
 
 }
