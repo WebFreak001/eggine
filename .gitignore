@@ -1,0 +1,10 @@
+
+out/
+*.class
+*.jar
+
+.idea/
+*.iml
+
+*.swp
+*.swo
