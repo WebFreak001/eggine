@@ -3,8 +3,8 @@ package com.deviotion.ld.eggine.graphics;
 import com.deviotion.ld.eggine.math.Dimension2d;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
 import java.awt.image.DataBufferInt;
+import java.util.Arrays;
 
 /**
  * Eggine
@@ -37,6 +37,17 @@ public class Screen {
     }
     public int[] getPixels () {
         return this.pixels;
+    }
+
+    public void setPixel (int x, int y, int color) {
+        if (x >= 0 && y >= 0 && x < this.dimension.getWidth() && y < this
+                .dimension.getHeight()) {
+            this.pixels[x + y * (int) this.dimension.getWidth()] = color;
+        }
+    }
+
+    public void fillScreen (int color) {
+        Arrays.fill(this.pixels, color);
     }
 
 }
