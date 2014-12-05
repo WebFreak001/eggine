@@ -28,6 +28,7 @@ public class Window extends JFrame {
 
         this.setTitle(title);
         this.setResizable(false);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         this.canvas = new Canvas();
         this.canvas.setSize((int) this.dimension.getWidth() * this.scale,
@@ -38,6 +39,7 @@ public class Window extends JFrame {
         this.pack();
 
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
 
     public Dimension2d getDimension () {
