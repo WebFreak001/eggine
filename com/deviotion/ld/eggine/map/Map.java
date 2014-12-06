@@ -1,6 +1,7 @@
 package com.deviotion.ld.eggine.map;
 
 import com.deviotion.ld.eggine.math.Dimension2d;
+import com.deviotion.ld.eggine.math.Vector2d;
 
 /**
  * Eggine
@@ -36,12 +37,18 @@ public class Map {
 
         return -1;
     }
+    public int getTile (Vector2d location) {
+        return this.getTile((int) location.getX(), (int) location.getY());
+    }
 
     public void setTile (int x, int y, int value) {
         if (x >= 0 && y >= 0 && x < this.dimension.getWidth() && y < this
                 .dimension.getHeight()) {
             this.map[x + y * (int) this.dimension.getWidth()] = value;
         }
+    }
+    public void setTile (Vector2d location, int value) {
+        this.setTile((int) location.getX(), (int) location.getY(), value);
     }
 
 }
