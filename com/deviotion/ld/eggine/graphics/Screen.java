@@ -145,6 +145,30 @@ public class Screen {
                 spriteAnimation);
     }
 
+    public void renderRectangle (int x, int y, int width, int height, int
+            color) {
+        for (int i=x; i<width; i++) {
+            for (int j=y; j<height; j++) {
+                this.setPixel(i, j, color);
+            }
+        }
+    }
+    public void renderRectangle (Vector2d location, int width, int height,
+                                 int color) {
+        this.renderRectangle((int) location.getX(), (int) location.getY(),
+                width, height, color);
+    }
+    public void renderRectangle (int x, int y, Dimension2d dimension, int
+            color) {
+        this.renderRectangle(x, y, (int) dimension.getWidth(), (int)
+                dimension.getHeight(), color);
+    }
+    public void renderRectangle (Vector2d location, Dimension2d dimension,
+                                 int color) {
+        this.renderRectangle((int) location.getX(), (int) location.getY(),
+                (int) dimension.getWidth(), (int) dimension.getHeight(), color);
+    }
+
     public void fillScreen (int color) {
         Arrays.fill(this.pixels, color);
     }
