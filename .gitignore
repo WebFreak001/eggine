@@ -1,13 +1,11 @@
 
-out/
-res/
 *.class
 *.jar
 
 .idea/
 *.iml
 
-src/uk/*
+uk/*
 
 *.swp
 *.swo
