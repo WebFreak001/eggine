@@ -3,6 +3,9 @@ package com.deviotion.ld.eggine.map;
 import com.deviotion.ld.eggine.math.Dimension2d;
 import com.deviotion.ld.eggine.math.Vector2d;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 /**
  * Eggine
  * A last minute game engine for Ludum Dare.
@@ -20,6 +23,8 @@ public class Map {
         this.dimension = dimension;
         this.map = new int[(int) this.dimension.getWidth() * (int) this
                 .dimension.getHeight()];
+
+        Arrays.fill(this.map, -1);
     }
 
     public int[] getMap () {
