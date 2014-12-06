@@ -177,7 +177,7 @@ public class Screen {
                 if (tile != -1) {
                     this.renderSpriteTile(x + (i * (int) spriteSheet
                                     .getSpriteSize().getWidth()), y +
-                                    (i * (int)
+                                    (j * (int)
                                             spriteSheet.getSpriteSize()
                                                     .getHeight()),
                             spriteSheet, tile);
