@@ -1,5 +1,6 @@
 package com.deviotion.ld.eggine.graphics;
 
+import com.deviotion.ld.eggine.map.Map;
 import com.deviotion.ld.eggine.math.Dimension2d;
 import com.deviotion.ld.eggine.math.Vector2d;
 
@@ -167,6 +168,22 @@ public class Screen {
                                  int color) {
         this.renderRectangle((int) location.getX(), (int) location.getY(),
                 (int) dimension.getWidth(), (int) dimension.getHeight(), color);
+    }
+
+    public void renderMap (int x, int y, Map map, SpriteSheet spriteSheet) {
+        for (int i=0; i<map.getDimension().getWidth(); i++) {
+            for (int j=0; j<map.getDimension().getHeight(); j++) {
+                int tile = map.getTile(i, j);
+                if (tile != -1) {
+                    this.renderSpriteTile(x + (i * (int) spriteSheet
+                                    .getSpriteSize().getWidth()), y +
+                                    (i * (int)
+                                            spriteSheet.getSpriteSize()
+                                                    .getHeight()),
+                            spriteSheet, tile);
+                }
+            }
+        }
     }
 
     public void fillScreen (int color) {
