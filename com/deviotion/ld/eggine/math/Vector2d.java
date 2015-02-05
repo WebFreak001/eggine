@@ -81,7 +81,7 @@ public class Vector2d {
     }
 
     public double dot (Vector2d vector) {
-		return this.x * vector.x + this.y * vector.y;
+		return this.x * vector.getX() + this.y * vector.getY();
     }
 	
 	public static Vector2d reflect (Vector2d in, Vector2d normal) {
